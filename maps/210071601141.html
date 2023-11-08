@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>210191601041-_-Embedded Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .popup-image {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Map With Hotspots</h1>    
+    </header>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var map = L.map('map').setView([13.0827, 80.2707], 5);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 15,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            var hotspots = [
+            {
+                "name": "Talakona Falls",
+                "lat": 13.8182,
+                "lng": 79.2058,
+                "description": "Talakona Falls is a mesmerizing waterfall located in the Chittoor district of Andhra Pradesh, India. Surrounded by lush greenery and a dense forest, it is the highest waterfall in Andhra Pradesh and a popular tourist attraction, offering a serene natural experience.",
+                "image": "talakona.png"
+            },
+            {
+                "name": "Crescent collge",
+                "lat": 12.877361,
+                "lng": 80.084706,
+                "description": "B.S. Abdur Rahman Crescent Institute of Science and Technology, formerly B. S. Abdur Rahman University, is a private deemed university located in Tamil Nadu, India.[1] Previously, functioning under University of Madras (1984–2001) and Anna University (2001–09) as Crescent Engineering College, the institute gained deemed status in 2008–09.",
+                "image": "crescent.png"
+            }
+];
+            hotspots.forEach(function (hotspot) {
+                var marker = L.marker([hotspot.lat, hotspot.lng]).addTo(map);
+                marker.bindPopup(
+                    `<b>${hotspot.name}</b><br><img class='popup-image' src='${hotspot.image}' alt='${hotspot.name}'><br><p>${hotspot.description}</p>`
+                );
+            });
+        });
+    </script>
+</body>
+</html>

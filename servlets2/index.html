@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information Form</title>
+  <style>
+    /* body {
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    input, button {
+      display: block;
+      margin-bottom: 10px;
+    } */
+  </style>
+</head>
+<body>
+
+  <form id="userInfoForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br>
+
+    <label for="studentId">Student ID:</label>
+    <input type="text" id="studentId" required><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" required><br>
+
+    <label for="class">Class:</label>
+    <input type="text" id="class" required><br>
+
+    <label for="gpa">GPA:</label>
+    <input type="number" id="gpa" step="0.01" required><br>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      // Get user input values
+      var name = document.getElementById('name').value;
+      var studentId = document.getElementById('studentId').value;
+      var age = document.getElementById('age').value;
+      var userClass = document.getElementById('class').value;
+      var gpa = document.getElementById('gpa').value;
+
+      // Create a new page and display the user information
+      var userInfoPage = window.open('', '_blank');
+      userInfoPage.document.write('<html><head><title>User Information</title></head><body>');
+      userInfoPage.document.write('<h1>Welcome to College Portal, You are a valid user</h1>');
+      userInfoPage.document.write('<p><strong>Name:</strong> ' + name + '</p>');
+      userInfoPage.document.write('<p><strong>Student ID:</strong> ' + studentId + '</p>');
+      userInfoPage.document.write('<p><strong>Age:</strong> ' + age + '</p>');
+      userInfoPage.document.write('<p><strong>Class:</strong> ' + userClass + '</p>');
+      userInfoPage.document.write('<p><strong>GPA:</strong> ' + gpa + '</p>');
+      userInfoPage.document.write('</body></html>');
+    }
+  </script>
+
+</body>
+</html>
